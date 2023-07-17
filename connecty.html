@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="connecty.css" />
+
+    <script defer src="js/Session.js"></script>
+    <script defer src="js/User.js"></script>
+    <script defer src="js/Post.js"></script>
+    <script defer src="js/Comment.js"></script>
+    <script defer src="js/connecty.js"></script>
+
+    <title>Connecty</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container_inner container_left">
+        <img class="profile_photo" src="img/profile.jpg" />
+
+        <p class="profile_username">zebicv</p>
+        <p class="profile_email">zebicv@gmail.com</p>
+
+        <div class="buttons">
+          <button class="btn btn_edit">
+            <ion-icon name="create-outline"></ion-icon>
+            <span>Edit profile</span>
+          </button>
+          <button class="btn btn_logout">
+            <ion-icon name="log-out-outline"></ion-icon>
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="container_inner container_right">
+        <div class="post_input">
+          <form id="post_form">
+            <textarea
+              class="post_content_input"
+              placeholder="What's on your mind, zebicv?"
+              type="submit"
+            ></textarea>
+            <button class="btn_post">Post</button>
+          </form>
+        </div>
+
+        <div class="filter_buttons">
+          <button class="btn show_all_posts">
+            <ion-icon name="list-outline"></ion-icon>
+            <span>Show all posts</span>
+          </button>
+          <button class="btn show_my_posts">
+            <ion-icon name="options-outline"></ion-icon>
+            <span>Show my posts</span>
+          </button>
+        </div>
+
+        <div class="all_posts"></div>
+      </div>
+    </div>
+
+    <div class="modal">
+      <button class="close_modal">&times;</button>
+      <form id="edit_profile_form">
+        <div>
+          <label for="edit_username">Edit username:</label>
+          <input
+            name="edit_username"
+            id="edit_username"
+            type="text"
+            placeholder="example@me.com"
+          />
+        </div>
+
+        <div>
+          <label for="edit_email">Edit email:</label>
+          <input
+            name="edit_email"
+            id="edit_email"
+            type="email"
+            placeholder="example@me.com"
+          />
+        </div>
+
+        <div class="btns_modal">
+          <button class="modal_btn btn_save_changes" type="submit">
+            <ion-icon name="save-outline"></ion-icon>
+            <span>Save changes</span>
+          </button>
+          <button class="modal_btn btn_delete_profile" type="button">
+            <ion-icon name="trash-outline"></ion-icon>
+            <span>Delete profile</span>
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="overlay"></div>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

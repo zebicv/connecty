@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <script defer src="js/Session.js"></script>
+    <script defer src="js/Validator.js"></script>
+    <script defer src="js/User.js"></script>
+    <script defer src="js/script.js"></script>
+    <title>Connecty</title>
+  </head>
+
+  <body>
+    <div class="logo">
+      <img src="img/connecty.png" />
+    </div>
+
+    <h1>Connecty: where connections turn into friendships</h1>
+
+    <div class="main_wrapper">
+      <h2>Login</h2>
+
+      <form id="login_form">
+        <label for="login_email">Email:</label>
+        <input
+          type="email"
+          id="login_email"
+          name="email"
+          placeholder="me@example.com"
+          required
+        />
+        <div id="email_error" class="error_message"></div>
+
+        <label for="login_password">Password:</label>
+        <input
+          type="password"
+          id="login_password"
+          name="password"
+          placeholder="********"
+          required
+        />
+        <div id="password_error" class="error_message"></div>
+
+        <div class="login_btn_wrapper">
+          <button class="btn login_btn">Sign in</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="register_wrapper">
+      <p>Don't have account yet?</p>
+      <button class="btn register_btn">Sign up now</button>
+    </div>
+
+    <div class="modal_window hidden">
+      <button class="close_modal">&times;</button>
+      <h2>Sign up</h2>
+
+      <div class="register_form_wrapper">
+        <form id="register_form">
+          <div>
+            <label for="username">Username:*</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="John Smith"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="register_email">Email:*</label>
+            <input
+              type="email"
+              id="register_email"
+              name="register_email"
+              placeholder="me@example.com"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="register_password">Password:*</label>
+            <input
+              type="password"
+              name="register_password"
+              id="register_password"
+              placeholder="********"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="confirm_password">Confirm password:*</label>
+            <input
+              type="password"
+              name="confirm_password"
+              id="confirm_password"
+              placeholder="********"
+              required
+            />
+          </div>
+
+          <div class="register_btn_wrapper">
+            <button class="btn register_btn register_btn_form">
+              Register &rarr;
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="overlay hidden"></div>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
