@@ -45,7 +45,7 @@ button {
   display: flex;
   gap: 1rem;
   max-width: 130rem;
-  min-height: 130rem;
+  min-height: 110rem;
   margin: auto;
   border-radius: 9px;
   background-color: #fff;
