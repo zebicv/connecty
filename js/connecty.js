@@ -12,7 +12,7 @@ const closeModalBtn = document.querySelector('.close_modal');
 const editUsername = document.querySelector('#edit_username');
 const editEmail = document.querySelector('#edit_email');
 const saveChangesBtn = document.querySelector('.btn_save_changes');
-const deleteProfileBtn = document.querySelector('.btn_delete_profile');
+const discardChangesBtn = document.querySelector('.btn_discard_changes');
 //////////// POST CONTENT /////////////////
 const postForm = document.querySelector('#post_form');
 const postInput = document.querySelector('.post_content_input');
@@ -121,7 +121,7 @@ const openModal = function () {
 };
 
 btnEditProfile.addEventListener('click', openModal);
-closeModalBtn.addEventListener('click', closeModal);
+discardChangesBtn.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
 window.addEventListener('keydown', function (e) {
@@ -155,7 +155,11 @@ modalForm.addEventListener('submit', function (e) {
     const currentUser = await user.getUser(sessionId);
     const currentUserId = currentUser.id;
 
-    const checkResult = await user.checkAllUsers(currentUserId);
+    const checkResult = await user.checkAllUsers(
+      currentUserId,
+      editEmail,
+      editUsername
+    );
 
     if (!checkResult) {
       // SENDING PUT REQUEST
@@ -165,10 +169,41 @@ modalForm.addEventListener('submit', function (e) {
       profileUsername.innerText = user.username;
       profileEmail.innerText = user.email;
     }
-
-    if (checkResult) alert('User already exists');
   }
   checkUsers();
+});
+
+//////////// CLEAR ERROR MESSAGE BELOW INPUT FIELD - MODAL /////////////////
+const clearErrorMsg = function (input) {
+  input.nextElementSibling.innerText = '';
+};
+
+//////////// SAVE CHANGES BUTTON VALIDATION /////////////////
+let isEditUsernameValid = true;
+let isEditEmailValid = true;
+const isSaveBtnValid = function () {
+  if (isEditUsernameValid && isEditEmailValid) {
+    saveChangesBtn.removeAttribute('disabled');
+  } else {
+    saveChangesBtn.setAttribute('disabled', 'true');
+  }
+};
+
+editUsername.addEventListener('input', function () {
+  isEditUsernameValid = editUsername.value.length >= 5 ? true : false;
+  isSaveBtnValid();
+});
+
+editEmail.addEventListener('input', function () {
+  const emailValue = editEmail.value;
+
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailValue)) {
+    isEditEmailValid = true;
+  } else {
+    isEditEmailValid = false;
+  }
+
+  isSaveBtnValid();
 });
 
 //////////// DELETE POSTS & COMMENTS SEQUENTIALLY /////////////////

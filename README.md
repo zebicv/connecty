@@ -13,8 +13,5 @@ IMPLEMENTED FEATURES:
 - Create and delete posts
 - Create and delete comments
 - Filter own posts
+- Edit profile
 
-FEATURES IN PROGRESS:
-
-- Edit profile - This functionality is not fully implemented as it requires additional logic to provide better user feedback thus enhancing the overall user experience.
-- Delete profile

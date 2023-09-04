@@ -108,7 +108,7 @@ class User {
     return data;
   }
 
-  async checkAllUsers(currentUserId) {
+  async checkAllUsers(currentUserId, editEmailField, editUsernameField) {
     const response = await fetch(`${this.api_url}/users`);
     const data = await response.json();
 
@@ -116,13 +116,39 @@ class User {
     const indexCurrentUser = data.map(user => user.id).indexOf(currentUserId);
     data.splice(indexCurrentUser, 1);
 
+    // USERNAME ALREADY EXISTS
     if (
       data.some(
         dbUser =>
-          dbUser.username === this.username || dbUser.email === this.email
+          dbUser.username === this.username && dbUser.email !== this.email
       )
-    )
+    ) {
+      this.showErrorMessage(editUsernameField, 'Username already exists');
       return true;
+    }
+
+    // EMAIL ALREADY EXISTS
+    if (
+      data.some(
+        dbUser =>
+          dbUser.username !== this.username && dbUser.email === this.email
+      )
+    ) {
+      this.showErrorMessage(editEmailField, 'Email already exists');
+      return true;
+    }
+
+    // BOTH USERNAME AND EMAIL ALREADY EXIST
+    if (
+      data.some(
+        dbUser =>
+          dbUser.username === this.username && dbUser.email === this.email
+      )
+    ) {
+      this.showErrorMessage(editUsernameField, 'Username already exists');
+      this.showErrorMessage(editEmailField, 'Email already exists');
+      return true;
+    }
 
     return false;
   }

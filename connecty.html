@@ -69,7 +69,6 @@
     </div>
 
     <div class="modal">
-      <button class="close_modal">&times;</button>
       <form id="edit_profile_form">
         <div>
           <label for="edit_username">Edit username:</label>
@@ -77,8 +76,10 @@
             name="edit_username"
             id="edit_username"
             type="text"
-            placeholder="example@me.com"
+            placeholder="John Smith"
+            oninput="clearErrorMsg(this)"
           />
+          <div id="edit_username_error" class="error_message"></div>
         </div>
 
         <div>
@@ -88,7 +89,9 @@
             id="edit_email"
             type="email"
             placeholder="example@me.com"
+            oninput="clearErrorMsg(this)"
           />
+          <div id="edit_email_error" class="error_message"></div>
         </div>
 
         <div class="btns_modal">
@@ -96,9 +99,9 @@
             <ion-icon name="save-outline"></ion-icon>
             <span>Save changes</span>
           </button>
-          <button class="modal_btn btn_delete_profile" type="button">
-            <ion-icon name="trash-outline"></ion-icon>
-            <span>Delete profile</span>
+          <button class="modal_btn btn_discard_changes" type="button">
+            <ion-icon name="close-circle-outline"></ion-icon>
+            <span>Discard changes</span>
           </button>
         </div>
       </form>
