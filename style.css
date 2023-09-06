@@ -243,3 +243,11 @@ h1 {
 .error_message span {
   font-size: 1.4rem;
 }
+
+button[disabled] {
+  background-color: #ccc;
+  color: #999;
+  cursor: not-allowed;
+  border: 1px solid #ccc;
+  opacity: 0.6;
+}

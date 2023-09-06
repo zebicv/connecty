@@ -15,6 +15,25 @@ class Validator {
     }
   }
 
+  isRegisterBtnEnabled() {
+    const registerBtn = document.querySelector('.register_btn_form');
+    const hasErrors = Object.values(this.errors).some(
+      errorsArray => errorsArray.length > 0
+    );
+    const areFieldsEmpty = Object.keys(this.configElements).some(fieldName => {
+      const inputElement = document.querySelector(
+        `${this.formID} input[name="${fieldName}"]`
+      );
+      return inputElement.value.trim() === '';
+    });
+
+    if (hasErrors || areFieldsEmpty) {
+      registerBtn.setAttribute('disabled', 'true');
+    } else {
+      registerBtn.removeAttribute('disabled');
+    }
+  }
+
   // ASSIGN INPUT EVENT ON EACH ELEMENT
   inputListener() {
     for (let element in this.configElements) {
@@ -23,6 +42,10 @@ class Validator {
       );
 
       inputElement.addEventListener('input', this.validate.bind(this));
+      inputElement.addEventListener(
+        'input',
+        this.isRegisterBtnEnabled.bind(this)
+      );
     }
   }
 
