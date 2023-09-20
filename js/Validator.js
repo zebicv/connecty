@@ -112,6 +112,7 @@ class Validator {
       ).parentElement;
 
       const errorsEl = document.createElement('ul');
+      errorsEl.classList.add('errors_messages');
       parentEl.appendChild(errorsEl);
 
       errors[key].forEach(error => {

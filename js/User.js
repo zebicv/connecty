@@ -33,16 +33,11 @@ class User {
   }
 
   showRegisterErrorMessage(parentEl, errorMsg) {
-    parentEl.insertAdjacentHTML(
-      'beforeend',
-      `
-      <ul>
-        <li>
+    const errorMessageEl = parentEl.querySelector('.errors_messages');
+    errorMessageEl.innerHTML = `<li>
           <ion-icon name="close-circle-outline"></ion-icon>
           <span>${errorMsg}</span>
-        </li>
-      </ul>`
-    );
+        </li>`;
   }
 
   async checkExistingUser(usernameEl, emailEl) {
