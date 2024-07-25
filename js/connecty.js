@@ -378,7 +378,11 @@ const showComments = function (btn) {
   const currentPost = btn.closest('.single_post');
   const currentPostComments = currentPost.querySelector('.comments_wrapper');
 
-  currentPostComments.style.display = 'block';
+  if (currentPostComments.style.display === 'none') {
+    currentPostComments.style.display = 'block';
+  } else {
+    currentPostComments.style.display = 'none';
+  }
 };
 
 //////////// LIKE POST /////////////////

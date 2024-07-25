@@ -13,15 +13,12 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  overflow: auto;
 }
 
 body {
   font-family: 'Rubik', sans-serif;
-  color: #212529;
-  background-image: linear-gradient(to bottom right, #fbdb89, #f48982);
-  background-repeat: no-repeat;
-  background-size: cover;
+  color: rgb(68 64 60);
+  background-color: rgb(245 245 244);
 }
 
 .logo {
@@ -40,22 +37,31 @@ h1 {
   text-align: center;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  height: 100vh;
+}
+
 .btn {
   cursor: pointer;
 }
 
 .main_wrapper {
-  max-width: 65rem;
-  margin: auto;
+  width: 65rem;
+
   padding: 5rem 6rem;
-  background-color: #f1f3f5;
+  background-color: white;
   border-radius: 9px;
-  margin-bottom: 4.8rem;
+
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
 }
 
 .main_wrapper h2 {
-  font-size: 2.4rem;
+  font-size: 2.2rem;
   text-align: center;
   margin-bottom: 2rem;
   line-height: 1.5;
@@ -63,18 +69,38 @@ h1 {
 
 .main_wrapper form label {
   display: block;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   margin-bottom: 0.4rem;
+}
+
+form label {
+  padding-left: 0.4rem;
+}
+
+form input {
+  font-size: 1.4rem;
+  border: 1px solid rgb(231 229 228);
+  border-radius: 8px;
+}
+
+form input:focus {
+  outline: none;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 2px rgba(250, 204, 21, 1), 0 0 0 3px white;
+}
+
+form input::placeholder {
+  font-size: 1.4rem;
+  font-weight: 300;
+
+  color: rgb(168 162 158);
 }
 
 .main_wrapper form input {
   width: 100%;
-  font-size: 1.4rem;
   padding-left: 1rem;
   height: 5rem;
   margin-bottom: 0.4rem;
-  border-radius: 4px;
-  border: 1px solid grey;
 }
 
 .main_wrapper form input:nth-child(4) {
@@ -87,29 +113,34 @@ h1 {
 }
 
 .login_btn_wrapper .btn {
+  font-size: 1.4rem;
   margin-top: 10px;
-  width: 29%;
+  text-transform: uppercase;
+  width: 100%;
   height: 5rem;
-  font-size: 1.8rem;
-  font-weight: 700;
+  font-weight: 600;
   border-radius: 9px;
   border: none;
-  color: white;
-  background-color: #fd7e14;
+  color: rgb(68 64 60);
+
+  background-color: rgb(250 204 21);
   transition: 0.3s all;
 }
 
+.login_btn_wrapper .btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fde68a, 0 0 0 4px white;
+  background-color: rgb(253 224 71);
+}
+
 .login_btn_wrapper .login_btn:hover {
-  background-color: white;
-  color: #fd7e14;
+  background-color: rgb(253 224 71);
 }
 
 .register_wrapper {
-  max-width: 65rem;
+  max-width: 55rem;
   text-align: center;
-  margin: auto;
-  font-size: 1.8rem;
-  margin-bottom: 9.6rem;
+  font-size: 1.4rem;
 }
 
 .register_wrapper p {
@@ -117,12 +148,18 @@ h1 {
 }
 
 .register_wrapper .register_btn {
-  font-size: 1.6rem;
+  background-color: rgb(250 204 21);
+  font-size: 1.4rem;
   padding: 13px;
   border: none;
-  border-radius: 9px;
-  color: #fd7e14;
-  font-weight: 700;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.register_wrapper .register_btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fde68a, 0 0 0 4px white;
+  background-color: rgb(253 224 71);
 }
 
 .modal_window {
@@ -133,7 +170,7 @@ h1 {
   max-width: 65rem;
   width: 100%;
   padding: 5rem 6rem;
-  background-color: #f1f3f5;
+  background-color: white;
   border-radius: 0.9rem;
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
   z-index: 1000;
@@ -141,12 +178,19 @@ h1 {
 }
 
 .modal_window .close_modal {
+  background-color: white;
   position: absolute;
   font-size: 4rem;
   right: 3rem;
   top: 2rem;
   border: 0;
   cursor: pointer;
+}
+
+.modal_window .close_modal:focus {
+  outline: none;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px rgba(250, 204, 21, 1), 0 0 0 3px white;
 }
 
 .overlay {
@@ -162,18 +206,14 @@ h1 {
 }
 
 .modal_window h2 {
-  font-size: 3.25rem;
+  font-size: 2.4rem;
   text-align: center;
   margin-bottom: 2.4rem;
   line-height: 1.5;
 }
 
-.modal_window .register_form_wrapper #register_form input:last-child {
-  margin-bottom: 1.6rem;
-}
-
 .modal_window .register_form_wrapper #register_form label {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   display: block;
   font-weight: 400;
   margin-bottom: 0.4rem;
@@ -185,14 +225,15 @@ h1 {
 }
 
 .modal_window .register_btn {
-  width: 29%;
+  width: 100%;
   height: 5rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   border-radius: 0.9rem;
   border: none;
   color: white;
-  background-color: #fd7e14;
+
+  background-color: rgb(250 204 21);
 }
 
 .modal_window .register_form_wrapper #register_form div {
@@ -201,11 +242,8 @@ h1 {
 
 .modal_window .register_form_wrapper #register_form input {
   width: 100%;
-  font-size: 1.4rem;
   padding-left: 1rem;
   height: 5rem;
-  border-radius: 0.4rem;
-  border: 1px solid grey;
 }
 
 .modal_window .register_form_wrapper #register_form ul {
@@ -250,4 +288,55 @@ button[disabled] {
   cursor: not-allowed;
   border: 1px solid #ccc;
   opacity: 0.6;
+}
+
+@media (max-width: 700px) {
+  .modal_window {
+    width: 90%;
+    padding: 5rem;
+  }
+
+  .main_wrapper {
+    width: 90%;
+    padding: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal_window {
+    padding: 5rem 2.5rem;
+  }
+
+  .modal_window .register_form_wrapper #register_form input {
+    height: 4rem;
+  }
+
+  .main_wrapper {
+    padding: 3rem;
+  }
+
+  .main_wrapper h2 {
+    font-size: 2rem;
+  }
+
+  .main_wrapper form label {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.2rem;
+  }
+
+  .main_wrapper form input {
+    font-size: 1.4rem;
+    height: 4rem;
+    padding: 8px 12px;
+  }
+
+  .main_wrapper form input::placeholder {
+    font-size: 1.4rem;
+  }
+
+  .login_btn_wrapper .btn {
+    font-size: 1.4rem;
+    height: 4rem;
+  }
 }

@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
       rel="stylesheet"
     />
 
@@ -20,46 +20,48 @@
   </head>
 
   <body>
-    <div class="logo">
+    <!-- <div class="logo">
       <img src="img/connecty.png" />
     </div>
 
-    <h1>Connecty: where connections turn into friendships</h1>
+    <h1>Connecty: where connections turn into friendships</h1> -->
 
-    <div class="main_wrapper">
-      <h2>Login</h2>
+    <main>
+      <div class="main_wrapper">
+        <h2>Login</h2>
 
-      <form id="login_form">
-        <label for="login_email">Email:</label>
-        <input
-          type="email"
-          id="login_email"
-          name="email"
-          placeholder="me@example.com"
-          required
-        />
-        <div id="email_error" class="error_message"></div>
+        <form id="login_form">
+          <label for="login_email">Email:</label>
+          <input
+            type="email"
+            id="login_email"
+            name="email"
+            placeholder="me@example.com"
+            required
+          />
+          <div id="email_error" class="error_message"></div>
 
-        <label for="login_password">Password:</label>
-        <input
-          type="password"
-          id="login_password"
-          name="password"
-          placeholder="********"
-          required
-        />
-        <div id="password_error" class="error_message"></div>
+          <label for="login_password">Password:</label>
+          <input
+            type="password"
+            id="login_password"
+            name="password"
+            placeholder="********"
+            required
+          />
+          <div id="password_error" class="error_message"></div>
 
-        <div class="login_btn_wrapper">
-          <button class="btn login_btn">Sign in</button>
-        </div>
-      </form>
-    </div>
+          <div class="login_btn_wrapper">
+            <button class="btn login_btn">Sign in</button>
+          </div>
+        </form>
+      </div>
 
-    <div class="register_wrapper">
-      <p>Don't have account yet?</p>
-      <button class="btn register_btn">Sign up now</button>
-    </div>
+      <div class="register_wrapper">
+        <p>Don't have account yet?</p>
+        <button class="btn register_btn">Sign up</button>
+      </div>
+    </main>
 
     <div class="modal_window hidden">
       <button class="close_modal">&times;</button>

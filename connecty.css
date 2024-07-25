@@ -10,10 +10,8 @@ html {
 
 body {
   font-family: 'Rubik', sans-serif;
-  color: #495057;
-  background-image: linear-gradient(to bottom right, #fbdb89, #f48982);
-  background-repeat: no-repeat;
-  background-size: cover;
+  color: rgb(68 64 60);
+  background-color: rgb(245 245 244);
   padding-top: 0.8rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -23,33 +21,34 @@ button {
   cursor: pointer;
 }
 
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fde68a, 0 0 0 4px white;
+  background-color: rgb(253 224 71);
+}
+
 .btn {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 600;
   padding: 0.8rem 1.2rem;
   display: flex;
   align-items: center;
-  border-radius: 10rem;
+  border-radius: 0.9rem;
   border: none;
-  background-color: #f9f5f3;
-  color: #f38e82;
   transition: all 0.3s;
 }
 
 .btn:hover {
   background-color: #dee2e6;
-  color: #f08c00;
 }
 
 .container {
   display: flex;
   gap: 1rem;
-  max-width: 130rem;
+  max-width: 100rem;
   min-height: 110rem;
   margin: auto;
   border-radius: 9px;
-  background-color: #fff;
-  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
 }
 
 .container .container_inner {
@@ -57,41 +56,63 @@ button {
 }
 
 .container .container_left {
+  font-size: 14px;
   align-self: flex-start;
   width: 25%;
-  padding: 0.5rem 1rem;
+  padding: 4rem 1rem;
+  background-color: white;
 }
 
-.container .container_left p {
-  font-size: 1.6rem;
+.container_left_info {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.container_left_info_personal {
+  flex-grow: 1;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.container .container_left .profile_username {
+  font-size: 1.4rem;
+  font-weight: 600;
 }
 
 .container .container_left .profile_email {
-  margin-bottom: 3.2rem;
+  font-size: 1.2rem;
+  color: rgb(148 163 184);
 }
 
 .container .container_left .profile_photo {
   display: block;
-  margin: auto;
-  width: 10rem;
+  width: 8rem;
   border-radius: 50%;
 }
 
 .container .container_left .buttons {
   display: flex;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .btn_edit {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
+}
+
+.btn_logout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
 }
 
 .container .container_right {
   width: 75%;
-  padding: 0.5rem 0.8rem;
+  padding-right: 1rem;
 }
 
 .container .container_right .post_input {
@@ -100,29 +121,36 @@ button {
 
 .container .container_right .post_input #post_form {
   display: flex;
-  gap: 1%;
+  justify-content: space-between;
+  gap: 0.8rem;
 }
 
 .container .container_right .post_input #post_form .post_content_input {
   font-size: 1.6rem;
-  padding-left: 0.5rem;
-  width: 75%;
+  flex-grow: 6;
   resize: none;
-  height: 5rem;
   border-radius: 9px;
+  padding: 1rem;
+  outline: none;
+  border: none;
+}
+
+.post_content_input::placeholder {
+  font-size: 1.4rem;
+  color: rgb(148 163 184);
 }
 
 .container .container_right .post_input #post_form .post_content_input:focus {
   border: none;
-  outline: 1px solid grey;
+  outline: 1px solid rgb(148 163 184);
 }
 
 .container .container_right .post_input #post_form .btn_post {
-  color: #495057;
-  width: 25%;
+  background-color: rgb(250 204 21);
+  font-size: 1.4rem;
+  flex-grow: 1;
   border-radius: 9px;
-  text-transform: uppercase;
-  font-weight: 800;
+  font-weight: 600;
   border: none;
 }
 
@@ -130,7 +158,6 @@ button {
   opacity: 0;
   width: 40px;
   height: 40px;
-  color: #fff;
   background-color: #ef476f;
   position: fixed;
   bottom: 10%;
@@ -148,9 +175,9 @@ button {
 .modal {
   display: none;
   position: absolute;
-  top: 21%;
-  left: 17%;
-  transform: translate(206%, 50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   max-width: 55rem;
   width: 100%;
   padding: 4rem 5rem;
@@ -174,17 +201,13 @@ button {
   transition: all 0.3s ease;
 }
 
-.animated {
-  transform: translate(7%, 50%);
-}
-
 .modal input {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   width: 100%;
   height: 4rem;
   border: none;
   border-radius: 0.4rem;
-  padding-left: 3px;
+  padding-left: 1rem;
 }
 
 .modal input:focus {
@@ -207,10 +230,11 @@ button {
 }
 
 .modal label {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 500;
   display: block;
   margin-bottom: 0.3rem;
+  padding-left: 0.4rem;
 }
 
 .modal .modal_btn {
@@ -222,13 +246,11 @@ button {
   padding: 12px 18px;
   border-radius: 9px;
   border: none;
-  font-size: 18px;
-  color: #fff;
+  font-size: 1.6rem;
 }
 
 .modal .btn_discard_changes {
   background-color: #ff6b6b;
-  color: #fff;
 }
 
 .modal .btn_save_changes {
@@ -243,18 +265,19 @@ button {
 }
 
 .single_post {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   position: relative;
-  padding: 0.5rem 0.8rem;
-  margin-bottom: 1rem;
-  border-radius: 0.6rem;
-  background-color: #f1f3f5;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border-radius: 9px;
+  background-color: white;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
   transition: 0.5s all ease;
 }
 
 .single_post .post_info {
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 1.2rem;
 }
 
 .single_post .post_info .post_img {
@@ -264,49 +287,42 @@ button {
 
 .single_post .post_info .post_details {
   padding-left: 0.5rem;
+  padding-top: 0.3rem;
 }
 
 .single_post .post_info .post_details .post_username {
   line-height: 1.2;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .single_post .post_info .post_details .post_date {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
+  color: rgb(148 163 184);
 }
 
 .single_post .post_content {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
 .single_post .total_likes {
-  margin-bottom: 0.5rem;
-}
-
-.liked_post {
-  font-weight: 700;
-  color: #d9480f;
+  color: rgb(148 163 184);
+  margin-bottom: 1.4rem;
 }
 
 .single_post .post_buttons {
   display: flex;
+  gap: 0.5rem;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin-bottom: 1.5rem;
-}
-
-.single_post .post_buttons .post_like_btn {
-  font-weight: 600;
-}
-
-.single_post .post_buttons .post_comment_btn {
-  font-weight: 600;
+  margin-top: 1rem;
+  /* color:rgb(148 163 184); */
 }
 
 .single_post .post_remove_btn {
   position: absolute;
   background-color: #fff;
-  top: 0.4rem;
+  top: 1.3rem;
   right: 1.4rem;
   border: none;
   font-size: 3rem;
@@ -316,19 +332,24 @@ button {
 }
 
 .single_post .post_btn {
+  background-color: white;
+  text-transform: uppercase;
+  color: rgb(148 163 184);
+  font-weight: 700;
+  font-size: 1.2rem;
+  flex-grow: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.5rem 0.6rem;
-  width: 42%;
   border: none;
   border-radius: 9px;
-  font-size: 1.6rem;
   transition: 0.5s all ease;
 }
 
-.single_post .post_btn:hover {
-  background-color: #fff;
+.single_post .post_buttons .liked_post {
+  font-weight: 700;
+  color: rgb(234 179 8);
 }
 
 .all_posts .single_post .comments_wrapper {
@@ -385,15 +406,10 @@ button {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.6rem;
-  color: black;
 }
 
 ion-icon {
   font-size: 22px;
-}
-
-.container_right .filter_buttons button {
-  color: #495057;
 }
 
 .no_posts_message {
@@ -409,7 +425,6 @@ ion-icon {
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  color: #f38e82;
   font-weight: 500;
 }
 
@@ -436,7 +451,6 @@ ion-icon {
 
 .error_message {
   display: flex;
-  color: red;
   font-size: 14px;
   margin-bottom: 10px;
 }
@@ -452,8 +466,81 @@ ion-icon {
 
 button[disabled] {
   background-color: #ccc;
-  color: #999;
   cursor: not-allowed;
   border: 1px solid #ccc;
   opacity: 0.6;
+}
+
+/* ///////////////////////////////// MEDIA QUERIES //////////////////////////////////////// */
+
+@media (max-width: 600px) {
+  .modal {
+    width: 90%;
+    padding: 4rem 3rem;
+  }
+
+  .modal .modal_btn {
+    gap: 0.2rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .container .container_left {
+    width: 30%;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container .container_left {
+    width: 95%;
+    align-items: center;
+    align-self: center;
+  }
+
+  .container .container_right {
+    width: 95%;
+  }
+
+  .container .container_left_info {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .container .container_left_info_personal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .container_left .buttons {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .container .container_inner {
+    width: 100%;
+  }
+}
+@media (max-width: 460px) {
+  .modal {
+    padding: 4rem 2rem;
+  }
+
+  .modal .modal_btn {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal .modal_btn {
+    padding: 1rem;
+  }
 }
