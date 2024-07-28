@@ -8,25 +8,9 @@ class Post {
   username = '';
   api_url = 'https://6420c09025cb6572104edd07.mockapi.io';
 
-  checkAllPostsEmpty() {
-    const allPosts = document.querySelector('.all_posts');
-    const numberOfPosts = allPosts.childElementCount;
-    const isPost = allPosts.firstElementChild.classList.contains('single_post');
-
-    if (numberOfPosts === 1 && !isPost) {
-      allPosts.innerHTML = '';
-    } else if (numberOfPosts === 0) {
-      this.displayNoPostsMessage('No posts yet.');
-    } else {
-      return;
-    }
-  }
-
   async createPost(sessionId) {
     // Check if there is any post input from user
     if (this.post_content === '') return;
-
-    this.checkAllPostsEmpty();
 
     // Create post in database
     let data = {
@@ -59,13 +43,17 @@ class Post {
     const currentUser = await user.getUser(sessionId);
 
     const html = `
-          <div class="single_post" data-post_id="${data.id}">
+        <div class="single_post" data-post_id="${data.id}">
+          <div class="post_item">
             <div class="post_info">
-              <img class="post_img" src="img/profile.jpg" />
-              <div class="post_details">
-                <p class="post_username">${currentUser.username}</p>
-                <p class="post_date">${data.date}</p>
+              <div class="post_info_wrapper">
+                <img class="post_img" src="img/profile.jpg" />
+                <div class="post_details">
+                  <p class="post_username">${currentUser.username}</p>
+                  <p class="post_date">${data.date}</p>
+                </div>
               </div>
+              <button class="post_remove_btn" onclick="removeMyPost(this)">&times;</button>
             </div>
 
             <div class="post_content">
@@ -89,22 +77,31 @@ class Post {
                 <span>Comment</span>
               </button>
             </div>
-            <button class="post_remove_btn" onclick="removeMyPost(this)">&times;</button>
 
             <div class="comments_wrapper">
-              <hr />
               <div class="post_comment">
                 <form id="post_comment_form">
                   <input
                     class="post_comment_input"
                     type="text"
-                    placeholder="Comment something..."
+                    placeholder="Leave a comment..."
                   />
                   <button class="add_comment_btn">Post comment</button>
                 </form>
               </div>
             </div>
-          </div>`;
+          </div>
+        </div>
+        `;
+
+    const numberOfPosts = allPostsWrapper.childElementCount;
+    const isPost =
+      allPostsWrapper.firstElementChild?.classList.contains('single_post');
+
+    // IF THERE IS AN ERROR, MAKE allPosts EMPTY
+    if (numberOfPosts === 1 && !isPost) {
+      allPostsWrapper.innerHTML = '';
+    }
 
     allPostsWrapper.insertAdjacentHTML('afterbegin', html);
   }
@@ -133,21 +130,12 @@ class Post {
     allPostsDiv.innerHTML = '<div class="loader"></div>';
   }
 
-  displayNoPostsMessage(errorMsg) {
-    const allPostsDiv = document.querySelector('.all_posts');
-    allPostsDiv.innerHTML = `
-    <div class="error_load_posts">
-        <ion-icon size="large" name="sad-outline"></ion-icon>
-        <p>${errorMsg}</p>
-      </div>`;
-  }
-
-  displayErrorMessage(error) {
+  displayErrorMessage(errorMessage) {
     const allPostsDiv = document.querySelector('.all_posts');
     allPostsDiv.innerHTML = `
       <div class="error_load_posts">
-        <ion-icon size="large" name="warning-outline"></ion-icon>
-        <p>${error.message}</p>
+        <ion-icon size="large" name="close-circle-outline"></ion-icon>
+        <p>${errorMessage}</p>
       </div>
     `;
   }
@@ -169,7 +157,7 @@ class Post {
       const data = await response.json();
       return data;
     } catch (error) {
-      this.displayErrorMessage(error);
+      this.displayErrorMessage(error.message);
     }
   }
 
@@ -177,19 +165,20 @@ class Post {
     const allPostsDiv = document.querySelector('.all_posts');
 
     if (data.length === 0) {
-      this.displayNoPostsMessage('No posts yet.');
+      this.displayErrorMessage('No posts yet');
+      return;
     } else {
       allPostsDiv.innerHTML = '';
     }
 
     data.forEach(post => {
       async function loadPost() {
-        // 1) User that made a post
+        // 1) User who made a post
         const { user_id } = post;
         const author = new User();
         const authorUser = await author.getUser(user_id);
 
-        // 2) User that is logged in
+        // 2) User who is logged in
         const user = new User();
         const currentUser = await user.getUser(sessionId);
 
@@ -218,12 +207,21 @@ class Post {
           if (comment.post_id === post.id) {
             commentsMarkup += `
             <div class="single_comment" data-comment_id="${comment.id}">
-              <p class="comment_author">${comment.username}</p>
-              <p class="comment_date">${comment.date}</p>
-              <p class="comment_content">
-                ${comment.content}
-              </p>
-              ${removeCommentBtn}
+              <div class="comment_img_container">
+                <img src="img/profile.jpg" alt="Profile picture" class="comment_img" />
+              </div>
+
+              <div class="comment_content_container">
+                <div class="comment_info">
+                  <div class="comment_details">
+                    <p class="comment_author">${comment.username}</p>
+                    <p class="comment_date">${comment.date}</p>
+                  </div>
+                  ${removeCommentBtn}
+                </div>
+
+                <p class="comment_content">${comment.content}</p>
+              </div>
             </div>
           `;
           }
@@ -239,12 +237,16 @@ class Post {
 
         const html = `
           <div class="single_post" data-post_id="${post.id}">
+            <div class="post_item">
               <div class="post_info">
-                <img class="post_img" src="img/profile.jpg" />
-                <div class="post_details">
-                  <p class="post_username">${authorUser.username}</p>
-                  <p class="post_date">${post.date}</p>
+                <div class="post_info_wrapper">
+                  <img class="post_img" src="img/profile.jpg" />
+                  <div class="post_details">
+                    <p class="post_username">${authorUser.username}</p>
+                    <p class="post_date">${post.date}</p>
+                  </div>
                 </div>
+                ${removeMyPostBtn}
               </div>
 
               <div class="post_content">
@@ -259,31 +261,31 @@ class Post {
               </div>
 
               <div class="post_buttons">
-              <button class="post_btn post_like_btn ${likedPost}" onclick="likePost(this)">
-                <ion-icon name="heart-outline"></ion-icon>
-                <span>Like</span>
-              </button>
-              <button class="post_btn post_comment_btn" onclick="showComments(this)">
-                <ion-icon name="chatbox-outline"></ion-icon>
-                <span>Comment</span>
-              </button>
-            </div>
-              ${removeMyPostBtn}
+                <button class="post_btn post_like_btn ${likedPost}" onclick="likePost(this)">
+                  <ion-icon name="heart-outline"></ion-icon>
+                  <span>Like</span>
+                </button>
+                <button class="post_btn post_comment_btn" onclick="showComments(this)">
+                  <ion-icon name="chatbox-outline"></ion-icon>
+                  <span>Comment</span>
+                </button>
+              </div>
+              
 
               <div class="comments_wrapper">
-                <hr />
                 <div class="post_comment">
                   <form id="post_comment_form">
                     <input
                       class="post_comment_input"
                       type="text"
-                      placeholder="Comment something..."
+                      placeholder="Leave a comment..."
                     />
                     <button class="add_comment_btn">Post comment</button>
                   </form>
                 </div>
-                ${commentsMarkup}
               </div>
+            </div>
+            ${commentsMarkup}
           </div>
         `;
 
@@ -301,5 +303,8 @@ class Post {
         return res.json();
       }
     });
+
+    const numAllPosts = allPostsWrapper.childElementCount;
+    if (numAllPosts === 1) this.displayErrorMessage('No posts yet.');
   }
 }

@@ -319,16 +319,25 @@ allPostsWrapper.addEventListener('submit', function (e) {
 
     const newCommentMarkup = `
       <div class="single_comment" data-comment_id="${newComment.id}">
-        <p class="comment_author">${newComment.username}</p>
-        <p class="comment_date">${newComment.date}</p>
-        <p class="comment_content">
-         ${newComment.content}
-        </p>
-        <button class="btn_comment_delete" onclick="removeMyComment(this)">&times;</button>
+        <div class="comment_img_container">
+          <img src="img/profile.jpg" alt="Profile picture" class="comment_img" />
+        </div>
+
+        <div class="comment_content_container">
+          <div class="comment_info">
+            <div class="comment_details">
+              <p class="comment_author">${newComment.username}</p>
+              <p class="comment_date">${newComment.date}</p>
+            </div>
+            <button class="btn_comment_delete" onclick="removeMyComment(this)">&times;</button>
+          </div>
+
+          <p class="comment_content">${newComment.content}</p>
+        </div>
       </div>
     `;
 
-    commentsContainer.insertAdjacentHTML('beforeend', newCommentMarkup);
+    postEl.insertAdjacentHTML('beforeend', newCommentMarkup);
   }
   commentRender();
 });
@@ -377,9 +386,16 @@ const showComments = function (btn) {
   // CURRENT POST
   const currentPost = btn.closest('.single_post');
   const currentPostComments = currentPost.querySelector('.comments_wrapper');
+  const curCommentInputField = currentPostComments.querySelector(
+    '.post_comment_input'
+  );
 
-  if (currentPostComments.style.display === 'none') {
+  if (
+    currentPostComments.style.display === '' ||
+    currentPostComments.style.display === 'none'
+  ) {
     currentPostComments.style.display = 'block';
+    curCommentInputField.focus();
   } else {
     currentPostComments.style.display = 'none';
   }
