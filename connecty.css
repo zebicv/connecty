@@ -86,8 +86,10 @@ button {
 
 .container .container_left .profile_photo {
   display: block;
-  width: 8rem;
+  width: 6rem;
+  height: 6rem;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .container .container_left .buttons {
@@ -112,11 +114,10 @@ button {
 
 .container .container_right {
   width: 75%;
-  padding-right: 1rem;
 }
 
 .container .container_right .post_input {
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
 }
 
 .container .container_right .post_input #post_form {
@@ -298,6 +299,9 @@ button {
 .single_post .post_info .post_img {
   width: 5rem;
   border-radius: 50%;
+  object-fit: cover;
+  height: 4rem;
+  width: 4rem;
 }
 
 .single_post .post_info .post_details {
@@ -331,7 +335,6 @@ button {
   justify-content: space-between;
   margin-bottom: 1.5rem;
   margin-top: 1rem;
-  /* color:rgb(148 163 184); */
 }
 
 .single_post .post_remove_btn {
@@ -347,8 +350,8 @@ button {
   background-color: white;
   text-transform: uppercase;
   color: rgb(148 163 184);
-  font-weight: 700;
-  font-size: 1.2rem;
+  font-weight: 600;
+  font-size: 1.4rem;
   flex-grow: 1;
   display: flex;
   justify-content: center;
@@ -359,8 +362,12 @@ button {
   transition: 0.5s all ease;
 }
 
+.single_post .post_btn:hover {
+  background-color: rgb(245 245 244);
+}
+
 .single_post .post_buttons .liked_post {
-  font-weight: 700;
+  font-weight: 600;
   color: rgb(234 179 8);
 }
 
@@ -440,11 +447,13 @@ ion-icon {
 }
 
 .no_posts_message {
+  color: rgb(234 179 8);
+  font-weight: 700;
   font-size: 2.4rem;
-  font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .error_load_posts {
@@ -509,11 +518,25 @@ button[disabled] {
   .modal .modal_btn {
     gap: 0.2rem;
   }
+
+  .single_post .post_info .post_img {
+    height: 3.2rem;
+    width: 3.2rem;
+  }
+
+  .single_post .post_item {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
 }
 
 @media (max-width: 700px) {
   .container .container_left {
     width: 30%;
+  }
+
+  .no_posts_message {
+    font-size: 2rem;
   }
 }
 
@@ -527,6 +550,7 @@ button[disabled] {
     width: 95%;
     align-items: center;
     align-self: center;
+    margin-bottom: 4rem;
   }
 
   .container .container_right {
@@ -537,6 +561,7 @@ button[disabled] {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 0.8rem;
   }
 
   .container .container_left_info_personal {
@@ -555,6 +580,10 @@ button[disabled] {
   .container .container_inner {
     width: 100%;
   }
+
+  .no_posts_message {
+    font-size: 1.8rem;
+  }
 }
 @media (max-width: 460px) {
   .modal {
@@ -569,5 +598,9 @@ button[disabled] {
 @media (max-width: 400px) {
   .modal .modal_btn {
     padding: 1rem;
+  }
+
+  .no_posts_message {
+    font-size: 1.6rem;
   }
 }

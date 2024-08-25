@@ -47,7 +47,7 @@ class Post {
           <div class="post_item">
             <div class="post_info">
               <div class="post_info_wrapper">
-                <img class="post_img" src="img/profile.jpg" />
+                <img class="post_img" src="img/profile2.png" />
                 <div class="post_details">
                   <p class="post_username">${currentUser.username}</p>
                   <p class="post_date">${data.date}</p>
@@ -132,12 +132,13 @@ class Post {
 
   displayErrorMessage(errorMessage) {
     const allPostsDiv = document.querySelector('.all_posts');
-    allPostsDiv.innerHTML = `
-      <div class="error_load_posts">
-        <ion-icon size="large" name="close-circle-outline"></ion-icon>
-        <p>${errorMessage}</p>
-      </div>
-    `;
+    allPostsDiv.innerHTML = `<p class="no_posts_message">${errorMessage}</p>`;
+    // allPostsDiv.innerHTML = `
+    //   <div class="error_load_posts">
+    //     <ion-icon size="large" name="close-circle-outline"></ion-icon>
+    //     <p>${errorMessage}</p>
+    //   </div>
+    // `;
   }
 
   async getPost(postId) {
@@ -165,7 +166,9 @@ class Post {
     const allPostsDiv = document.querySelector('.all_posts');
 
     if (data.length === 0) {
-      this.displayErrorMessage('No posts yet');
+      this.displayErrorMessage(
+        'No posts to show. Feel free to post something! 😀'
+      );
       return;
     } else {
       allPostsDiv.innerHTML = '';
@@ -208,7 +211,7 @@ class Post {
             commentsMarkup += `
             <div class="single_comment" data-comment_id="${comment.id}">
               <div class="comment_img_container">
-                <img src="img/profile.jpg" alt="Profile picture" class="comment_img" />
+                <img src="img/profile2.png" alt="Profile picture" class="comment_img" />
               </div>
 
               <div class="comment_content_container">
@@ -240,7 +243,7 @@ class Post {
             <div class="post_item">
               <div class="post_info">
                 <div class="post_info_wrapper">
-                  <img class="post_img" src="img/profile.jpg" />
+                  <img class="post_img" src="img/profile2.png" />
                   <div class="post_details">
                     <p class="post_username">${authorUser.username}</p>
                     <p class="post_date">${post.date}</p>
@@ -305,6 +308,9 @@ class Post {
     });
 
     const numAllPosts = allPostsWrapper.childElementCount;
-    if (numAllPosts === 1) this.displayErrorMessage('No posts yet.');
+    if (numAllPosts === 1)
+      this.displayErrorMessage(
+        'No posts to show. Feel free to post something! 😀'
+      );
   }
 }

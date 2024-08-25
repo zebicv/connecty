@@ -320,7 +320,7 @@ allPostsWrapper.addEventListener('submit', function (e) {
     const newCommentMarkup = `
       <div class="single_comment" data-comment_id="${newComment.id}">
         <div class="comment_img_container">
-          <img src="img/profile.jpg" alt="Profile picture" class="comment_img" />
+          <img src="img/profile2.png" alt="Profile picture" class="comment_img" />
         </div>
 
         <div class="comment_content_container">
