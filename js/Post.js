@@ -86,7 +86,7 @@ class Post {
                     type="text"
                     placeholder="Leave a comment..."
                   />
-                  <button class="add_comment_btn">Post comment</button>
+                  <button class="add_comment_btn">Post</button>
                 </form>
               </div>
             </div>
@@ -133,12 +133,6 @@ class Post {
   displayErrorMessage(errorMessage) {
     const allPostsDiv = document.querySelector('.all_posts');
     allPostsDiv.innerHTML = `<p class="no_posts_message">${errorMessage}</p>`;
-    // allPostsDiv.innerHTML = `
-    //   <div class="error_load_posts">
-    //     <ion-icon size="large" name="close-circle-outline"></ion-icon>
-    //     <p>${errorMessage}</p>
-    //   </div>
-    // `;
   }
 
   async getPost(postId) {
@@ -283,7 +277,7 @@ class Post {
                       type="text"
                       placeholder="Leave a comment..."
                     />
-                    <button class="add_comment_btn">Post comment</button>
+                    <button class="add_comment_btn">Post</button>
                   </form>
                 </div>
               </div>

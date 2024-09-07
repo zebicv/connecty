@@ -390,15 +390,7 @@ const showComments = function (btn) {
     '.post_comment_input'
   );
 
-  if (
-    currentPostComments.style.display === '' ||
-    currentPostComments.style.display === 'none'
-  ) {
-    currentPostComments.style.display = 'block';
-    curCommentInputField.focus();
-  } else {
-    currentPostComments.style.display = 'none';
-  }
+  curCommentInputField.focus();
 };
 
 //////////// LIKE POST /////////////////

@@ -114,10 +114,12 @@ button {
 
 .container .container_right {
   width: 75%;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .container .container_right .post_input {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .container .container_right .post_input #post_form {
@@ -131,7 +133,8 @@ button {
   flex-grow: 6;
   resize: none;
   border-radius: 9px;
-  padding: 1rem;
+  padding-top: 0.6rem;
+  padding-left: 1rem;
   outline: none;
   border: none;
 }
@@ -150,6 +153,7 @@ button {
   background-color: rgb(250 204 21);
   font-size: 1.4rem;
   flex-grow: 1;
+  min-width: 20%;
   border-radius: 9px;
   font-weight: 600;
   border: none;
@@ -159,7 +163,7 @@ button {
   opacity: 0;
   width: 40px;
   height: 40px;
-  background-color: #ef476f;
+  background-color: rgb(250 204 21);
   position: fixed;
   bottom: 10%;
   right: 10%;
@@ -240,6 +244,7 @@ button {
 
 .modal .modal_btn {
   font-weight: 500;
+  color: rgb(12 10 9);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -251,17 +256,17 @@ button {
 }
 
 .modal .btn_discard_changes {
-  background-color: #ff6b6b;
+  background-color: rgb(248 113 113);
 }
 
 .modal .btn_save_changes {
-  background-color: #0ca678;
+  background-color: rgb(74 222 128);
 }
 
 .all_posts {
   position: relative;
   font-size: 1.6rem;
-  padding: 0.5rem 0.8rem;
+  /* padding: 0.5rem 0.8rem; */
   min-height: 100%;
 }
 
@@ -320,12 +325,12 @@ button {
 }
 
 .single_post .post_content {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .single_post .total_likes {
   color: rgb(148 163 184);
-  margin-bottom: 1.4rem;
+  margin-bottom: 1rem;
 }
 
 .single_post .post_buttons {
@@ -334,7 +339,7 @@ button {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .single_post .post_remove_btn {
@@ -369,10 +374,6 @@ button {
 .single_post .post_buttons .liked_post {
   font-weight: 600;
   color: rgb(234 179 8);
-}
-
-.all_posts .single_post .comments_wrapper {
-  display: none;
 }
 
 .single_post .single_comment {
@@ -416,6 +417,7 @@ button {
 
 #post_comment_form {
   display: flex;
+  gap: 1.5rem;
   width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -426,20 +428,35 @@ button {
   width: 80%;
   height: 3rem;
   border-radius: 0.9rem;
-  border: 1px solid black;
+  border: 1px solid rgb(231 229 228);
+  background-color: rgb(245 245 244);
 }
 
 #post_comment_form .add_comment_btn {
   border-radius: 9px;
-  border: 1px solid black;
+  background-color: rgb(250 204 21);
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  outline: none;
   width: 20%;
+}
+
+#post_comment_form .post_comment_input:focus {
+  border: 1px solid rgb(231 229 228);
+  outline: none;
+}
+
+#post_comment_form .post_comment_input::placeholder {
+  color: rgb(168 162 158);
 }
 
 .container_right .filter_buttons {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.6rem;
+  margin-bottom: 0.8rem;
 }
 
 ion-icon {
@@ -466,7 +483,7 @@ ion-icon {
 
 .loader {
   border: 5px solid #f3f3f3;
-  border-top: 5px solid #f38e82;
+  border-top: 5px solid rgb(250 204 21);
   border-radius: 50%;
   width: 40px;
   height: 40px;
